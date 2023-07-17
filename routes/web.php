@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::post('/login',[UserController::class,'login']);
-Route::get('/',[HomeController::class,'index'])->name('Home');
+Route::get('/',[ProductController::class,'index']);
