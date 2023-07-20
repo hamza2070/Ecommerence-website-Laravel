@@ -1,3 +1,11 @@
+<?php
+use App\Http\Controllers\ProductController;
+$CartCount=0;
+if(session()->has('user')){
+$CartCount=ProductController::cartCount();
+}
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Brand</a>
@@ -18,10 +26,21 @@
             name="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-     
+          @if (session()->has('user'))
+            
+          <li class="nav-item">
+            <a style="margin-left:15%" aria-current="page" href="/logout">
+            <button class="btn btn-outline-danger">
+            Logout
+            </button>
+          </a>
+          </li>
+          @endif
         </ul>
         
-            <p>cart(0)</p>
+          <a class="nav-link active" href="/cartlist">cart({{$CartCount}})</a>
+          
+         
       </div>
     </div>
   </nav>
